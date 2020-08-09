@@ -1,0 +1,70 @@
+import React from 'react';
+import { StyleSheet, Button, TextInput, View, Text } from 'react-native';
+import { globalStyles } from '../styles/global.js';
+import { Formik } from 'formik';
+import FlatButton from '../shared/button.js';
+
+
+export default function Form({ addDetails }) {
+
+  return (
+    
+    <View style={globalStyles.container}>
+      <Formik
+         initialValues={{ id: '', f_name: '', l_name: '',desc:'' }}
+         
+          onSubmit={(values, actions) => {
+           actions.resetForm(); 
+          addDetails(values);
+        }}
+      >
+        {props => (
+          <View>
+            <TextInput
+              style={globalStyles.input}
+              placeholder='UNIQUE ID'
+              onChangeText={props.handleChange('id')}
+              onBlur={props.handleBlur('id')} 
+              value={props.values.id}
+            />
+            
+           
+
+            <TextInput
+              style={globalStyles.input}
+              
+              placeholder='FIRST NAME'
+              onChangeText={props.handleChange('f_name')}
+              onBlur={props.handleBlur('f_name')}
+              value={props.values.f_name}
+            />
+            
+
+            <TextInput
+              style={globalStyles.input}
+              
+              placeholder='LAST NAME'
+              onChangeText={props.handleChange('l_name')}
+              onBlur={props.handleBlur('l_name')}
+              value={props.values.l_name}
+            />
+            
+
+            <TextInput
+              style={globalStyles.input}
+              multiline minHeight={60}
+              placeholder='DESCRIPTION'
+              onChangeText={props.handleChange('desc')}
+              onBlur={props.handleBlur('desc')}
+              value={props.values.desc}
+            />
+            
+            
+            <FlatButton onPress={props.handleSubmit} text='submit' />
+          </View>
+        )}
+      </Formik>
+    </View>
+    
+  );
+}

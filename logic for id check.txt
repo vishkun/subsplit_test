@@ -1,0 +1,29 @@
+﻿//FUNCTION FOR CHECKING UNIQUE ALPHANUMERIC ID WHERE DSTR IS INPUT BY USER
+  function check(dstr) 
+{
+      var dsum = 0;
+    
+      for (var i = 0; i < dstr.length; i++)
+      {
+    
+        if (/[0-9]/.test(dstr[i])) dsum += parseInt(dstr[i])
+      }
+      const index =dsum; 
+    
+    
+     var store=new Array(82);
+     store.fill(0);
+     console.log(store);
+    
+    
+    
+     if(store[index-1] == 0)
+     {
+       store[index-1] = 1;
+       console.log(store);
+       return true;
+     }
+     else
+      //  console.log("Key not availabe");
+       return false;
+    }
